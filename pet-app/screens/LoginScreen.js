@@ -2,24 +2,24 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 
-export default function SignUpScreen() {
-  const [name, setName] = useState('');
+export default function LoginScreen() {
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleSignUp = () => {
-    if (!name || !email) {
-      alert("Please enter all fields.");
+  const handleLogin = () => {
+    if (!email || !password) {
+      alert("Please fill in all fields.");
       return;
     }
-    alert(`Signed up as ${name} (${email})`);
+    alert(`Logged in as ${email}`);
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Sign Up</Text>
-      <TextInput placeholder="Name" value={name} onChangeText={setName} style={styles.input} />
+      <Text style={styles.title}>Login</Text>
       <TextInput placeholder="Email" value={email} onChangeText={setEmail} keyboardType="email-address" style={styles.input} />
-      <Button title="Sign Up" onPress={handleSignUp} />
+      <TextInput placeholder="Password" value={password} onChangeText={setPassword} secureTextEntry style={styles.input} />
+      <Button title="Login" onPress={handleLogin} />
     </View>
   );
 }
